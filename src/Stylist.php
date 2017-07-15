@@ -36,33 +36,33 @@
             }
         }
 
-        static function find($search_id)
-        {
-            $found_stylist = null;
-            $returned_stylists = $GLOBALS['DB']->prepare("SELECT * FROM stylists WHERE id = :id");
-            $returned_stylists->bindParam(':id', $search_id, PDO::PARAM_STR);
-            $returned_stylists->execute();
-            foreach($returned_stylists as $stylist) {
-                $stylist = $stylist['stylist'];
-                $id = $stylist['id'];
-                if ($id == $search_id) {
-                    $found_stylist = new Stylist($stylist, $id);
-                }
-            }
-            return $found_stylist;
-        }
+        // static function find($search_id)
+        // {
+        //     $found_stylist = null;
+        //     $returned_stylists = $GLOBALS['DB']->prepare("SELECT * FROM stylists WHERE id = :id");
+        //     $returned_stylists->bindParam(':id', $search_id, PDO::PARAM_STR);
+        //     $returned_stylists->execute();
+        //     foreach($returned_stylists as $stylist) {
+        //         $stylist = $stylist['stylist'];
+        //         $id = $stylist['id'];
+        //         if ($id == $search_id) {
+        //             $found_stylist = new Stylist($stylist, $id);
+        //         }
+        //     }
+        //     return $found_stylist;
+        // }
 
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
-            $stylists = array();
+            $stylists_array = array();
             foreach ($returned_stylists as $stylist) {
-                $stylist_name = $stylist['stylist'];
                 $id = $stylist['id'];
-                $new_stylist = new Stylist($stylist_name, $id);
+                $stylist = $stylist['stylist'];
+                $new_stylist = new Stylist($stylist, $id);
                 array_push($stylists, $new_stylist);
             }
-            return $stylists;
+            return $stylists_array;
         }
 
 
