@@ -57,10 +57,11 @@
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
             $stylists_array = array();
             foreach ($returned_stylists as $stylist) {
-                $id = $stylist['id'];
                 $stylist = $stylist['stylist'];
+                $id = $stylist['id'];
                 $new_stylist = new Stylist($stylist, $id);
                 array_push($stylists, $new_stylist);
+
             }
             return $stylists_array;
         }
