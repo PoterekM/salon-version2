@@ -87,20 +87,20 @@
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
         }
 
-        // function testFind()
-        // {
-        //     $stylist = "Jimmmi";
-        //     $test_stylist = new Stylist($stylist);
-        //     $test_stylist->save();
-        //
-        //     $stylist2 = "Alpbpbert";
-        //     $test_stylist2 = new Stylist($stylist2);
-        //     $test_stylist2->save();
-        //
-        //     $result = Stylist::find($test_stylist2->getId());
-        //
-        //     $this->assertEquals($test_stylist2, $result);
-        // }
+        function testFind()
+        {
+            $stylist_name = "Jimmmi";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+
+            $stylist_name2 = "Alpbpbert";
+            $test_stylist2 = new Stylist($stylist_name2);
+            $test_stylist2->save();
+
+            $result = Stylist::find($test_stylist->getId());
+
+            $this->assertEquals($test_stylist, $result);
+        }
 
 
 
