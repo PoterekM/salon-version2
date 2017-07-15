@@ -54,6 +54,16 @@
             $this->assertTrue(is_numeric($result));
         }
 
+        function testSave()
+        {
+            $stylist = "Lucy";
+            $test_stylist = new Stylist($stylist);
+
+            $executed = $test_stylist->save();
+
+            $this->assertTrue($executed, "This stylist wasn't saved, bro.");
+        }
+
 
 
 
