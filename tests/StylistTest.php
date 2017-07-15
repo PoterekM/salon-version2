@@ -26,8 +26,35 @@
             $result = $test_stylist->getStylist();
             //Assert
             $this->assertEquals($stylist, $result);
-
         }
+
+        function testSetStylist()
+        {
+            $stylist = "Yani";
+            $test_stylist = new Stylist($stylist);
+            $new_stylist = "Yawni";
+
+            $test_stylist->setStylist($new_stylist);
+            $result = $test_stylist->getStylist();
+
+            $this->assertEquals($new_stylist, $result);
+        }
+
+        function testGetId()
+        {
+            //Arrange
+            $stylist = "Drew";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+
+            //Act
+            $result = $test_stylist->getId();
+
+            //assert
+            $this->assertTrue(is_numeric($result));
+        }
+
+
 
 
     }
