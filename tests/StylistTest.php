@@ -64,6 +64,38 @@
             $this->assertTrue($executed, "This stylist wasn't saved, bro.");
         }
 
+        function testGetAll()
+        {
+            $stylist = "Jimi";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+
+            $stylist2 = "Alpert";
+            $test_stylist2 = new Stylist($stylist2);
+            $test_stylist2->save();
+
+            $result = Stylist::getAll();
+
+            $this->assertEquals([$test_stylist, $test_stylist2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            $stylist = "Bobbo";
+            $stylist2 = "Rudy";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($stylist2);
+            $test_stylist2->save();
+
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+
+            $this->assertEquals([], $result);
+
+        }
+
+
 
 
 
