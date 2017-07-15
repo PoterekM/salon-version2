@@ -7,6 +7,7 @@
 
     // require_once "src/Client.php";
     require_once "src/Stylist.php";
+    require_once "src/Client.php";
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
@@ -22,6 +23,15 @@
           Stylist::deleteAll();
         }
 
+        function testSave()
+        {
+            $stylist = "Lucy";
+            $test_stylist = new Stylist($stylist);
+
+            $executed = $test_stylist->save();
+
+            $this->assertTrue($executed, "This stylist wasn't saved, bro.");
+        }
 
         function testGetStylist()
         {
@@ -56,30 +66,20 @@
 
             //Act
             $result = $test_stylist->getId();
-            // $result = $test_stylist->save();
 
             //assert
-            $this->assertTrue(is_numeric($result));
+            $this->assertEquals(true, is_numeric($result));
         }
 
-        function testSave()
-        {
-            $stylist = "Lucy";
-            $test_stylist = new Stylist($stylist);
-
-            $executed = $test_stylist->save();
-
-            $this->assertTrue($executed, "This stylist wasn't saved, bro.");
-        }
 
         function testGetAll()
         {
-            $stylist_name = "Jimi";
-            $test_stylist = new Stylist($stylist_name);
+            $stylist = "Jimi";
+            $test_stylist = new Stylist($stylist);
             $test_stylist->save();
 
-            $stylist2_name = "Alpert";
-            $test_stylist2 = new Stylist($stylist2_name);
+            $stylist2 = "Alpert";
+            $test_stylist2 = new Stylist($stylist2);
             $test_stylist2->save();
 
             $result = Stylist::getAll();
