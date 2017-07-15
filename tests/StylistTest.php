@@ -16,6 +16,19 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
+        function testGetStylist()
+        {
+            //Arrange
+            $stylist = "Nancy";
+            $test_stylist = new Stylist($stylist);
+
+            //Act
+            $result = $test_stylist->getStylist();
+            //Assert
+            $this->assertEquals($stylist, $result);
+
+        }
+
 
     }
 
