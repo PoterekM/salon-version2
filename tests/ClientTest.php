@@ -19,7 +19,7 @@
         protected function tearDown()
         {
             Client::deleteAll();
-            Stylist::deleteAll();
+            // Stylist::deleteAll();
         }
 
         function testSave()
@@ -27,11 +27,11 @@
             $stylist = "Lucy";
             $test_stylist = new Stylist($stylist);
             $test_stylist->save();
-            $stylist_id = $test_stylist->getStylistId();
+            $stylist_id = $test_stylist->getId();
 
             $client_name = "jarjarbinks";
 
-            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client = new Client($client_name, $stylist_id);
 
             $test_client->save();
 
@@ -58,8 +58,13 @@
 
     function testSetClientName()
     {
+        $stylist = "jamba";
+        $test_stylist = new Stylist($stylist);
+        $test_stylist->save();
+        $stylist_id = $test_stylist->getId();
+
         $client_name = "Yannni";
-        $test_client = new Client($client_name, $id, $stylist_id);
+        $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
         $new_name = "Yawhni";
 

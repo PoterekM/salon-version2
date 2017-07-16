@@ -2,14 +2,14 @@
     class Client
     {
         private $client_name;
-        private $id;
         private $stylist_id;
+        private $id;
 
-        function __construct($client_name, $id = null, $stylist_id)
+        function __construct($client_name, $stylist_id, $id = null)
         {
             $this->client_name = $client_name;
-            $this->id = $id;
             $this->stylist_id = $stylist_id;
+            $this->id = $id;
         }
 //good
         function getClientName()
@@ -26,12 +26,12 @@
         {
             return $this->id;
         }
-
+//good
         function getStylistId()
         {
             return $this->$stylist_id;
         }
-
+//should be good
         function save()
         {
             $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
@@ -42,21 +42,22 @@
                 return false;
             }
         }
-
+//should be good
         static function getAll()
         {
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
-            $clients_array = array();
+            $clients = array();
             foreach ($returned_clients as $client) {
                 $client_name = $client['name'];
-                $id = $client['id'];
                 $stylist_id = $client['stylist_id'];
-                $new_client = new Client($client_name, $id, $stylist_id);
-                array_push($clients_array, $new_client);
+                $id = $client['id'];
+                $new_client = new Client ($client_name, $stylist_id, $id);
+                array_push($clients, $new_client);
             }
-            return $clients_array;
+            return $clients;
         }
 
+//should be good
         static function deleteAll()
         {
             $executed = $GLOBALS['DB']->exec("DELETE FROM clients;");
@@ -66,7 +67,7 @@
                 return false;
             }
         }
-
+//should be good
         static function find($search_id)
         {
             $found_client = null;
@@ -75,10 +76,10 @@
             $returned_clients->execute();
             foreach($returned_clients as $client) {
                 $client_name = $client['name'];
-                $id = $client['id'];
                 $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
                 if ($id == $search_id) {
-                    $found_client = new Client($client_name, $id, $stylist_id);
+                    $found_client = new Client($client_name, $stylist_id, $id);
                 }
             }
             return $found_client;

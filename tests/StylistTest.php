@@ -132,11 +132,11 @@
             $stylist_id = $test_stylist->getId();
 
             $client_name = "Roger";
-            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client = new Client($client_name, $stylist_id, $id);
             $test_client->save();
 
             $client_name_2 = "Diam";
-            $test_client_2 = new Client($client_name_2, $id, $stylist_id);
+            $test_client_2 = new Client($client_name_2, $stylist_id, $id);
             $test_client_2->save();
 
             // Act
