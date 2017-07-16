@@ -63,8 +63,23 @@
         $executed = $test_client->save();
 
         $this->assertTrue($executed, "I'd rather not save your testSave");
-
     }
+
+    function testGetAll()
+    {
+        $client_name = "Jimi";
+        $test_client = new Client($client_name);
+        $test_client->save();
+
+        $client_name2 = "Alpert";
+        $test_client2 = new Client($client_name2);
+        $test_client2->save();
+
+        $result = Client::getAll();
+
+        $this->assertEquals([$test_client, $test_client2], $result);
+    }
+
 
 
     }

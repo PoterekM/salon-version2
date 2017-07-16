@@ -37,6 +37,20 @@
             }
         }
 
+        static function getAll()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
+            $clients_array = array();
+            foreach ($returned_clients as $client) {
+                $client_name = $client['name'];
+                $id = $client['client_id'];
+                $new_client = new Stylist($client_name, $id);
+                array_push($clients_array, $new_client);
+            }
+            return $clients_array;
+        }
+
+
 
 
 
