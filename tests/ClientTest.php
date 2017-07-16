@@ -5,7 +5,6 @@
     * @backupStaticAttributes disabled
     */
 
-    // require_once "src/Client.php";
     require_once "src/Stylist.php";
     require_once "src/Client.php";
 
@@ -17,12 +16,16 @@
 
     class ClientTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+          Client::deleteAll();
+        }
+
 
     function testGetClientName()
     {
-        $client_name = "Burmie";
+        $client_name = "BurrGurr";
         $test_client = new Client($client_name);
-        // $test_client->save();
 
         $result = $test_client->getClientName();
 
@@ -67,17 +70,33 @@
 
     function testGetAll()
     {
-        $client_name = "Jimi";
+        $client_name = "JimiInGetAll";
         $test_client = new Client($client_name);
         $test_client->save();
 
-        $client_name2 = "Alpert";
+        $client_name2 = "AlpertInGetAll";
         $test_client2 = new Client($client_name2);
         $test_client2->save();
 
         $result = Client::getAll();
 
         $this->assertEquals([$test_client, $test_client2], $result);
+    }
+
+    function testDeleteAll()
+    {
+        $client_name = "juniper";
+        $test_client = new Client($client_name);
+        $test_client->save();
+
+        $client_name2 = "JuiGer";
+        $test_client2 = new Client($client_name2);
+        $test_client2->save();
+
+        Client::deleteAll();
+        $result = Client::getAll();
+
+        $this->assertEquals([], $result);
     }
 
 

@@ -44,12 +44,21 @@
             foreach ($returned_clients as $client) {
                 $client_name = $client['name'];
                 $id = $client['client_id'];
-                $new_client = new Stylist($client_name, $id);
+                $new_client = new Client($client_name, $id);
                 array_push($clients_array, $new_client);
             }
             return $clients_array;
         }
 
+        static function deleteAll()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM clients;");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
 
 
