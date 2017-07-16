@@ -166,15 +166,15 @@
         $stylist = "Mona";
         $test_stylist = new Stylist($stylist);
         $test_stylist->save();
+        $stylist_id = $test_stylist->getId();
 
         $client_name = "Jimmmi";
         $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
 
-        $stylist_id = $test_stylist->getId();
 
         $client_name2 = "Alpbpbert";
-        $test_client2 = new Client($client_name2);
+        $test_client2 = new Client($client_name2, $stylist_id);
         $test_client2->save();
 
         $result = Client::find($test_client2->getId());
