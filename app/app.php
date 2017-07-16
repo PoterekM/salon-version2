@@ -36,6 +36,11 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->post("/stylists", function() use ($app) {
+        $category = new Stylist($_POST['stylist']);
+        $category->save();
+        return $app['twig']->render('index.html.twig', array('categories' => Stylist::getAll()));
+    });
 
     return $app;
 
