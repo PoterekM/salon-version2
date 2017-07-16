@@ -94,6 +94,9 @@
         $this->assertEquals(true, is_numeric($result));
     }
 
+
+    /////wowoowowowoowow should be okay
+
     function testGetStylistId()
     {
         $stylist = "Lola";
@@ -106,7 +109,7 @@
         $test_client->save();
 
         $client_name2 = "Gertrude";
-        $test_client2 = new Client($client_name2, $stylist_id2);
+        $test_client2 = new Client($client_name2, $stylist_id);
         $test_client->save();
 
         $result = $test_client->getStylistId();
@@ -114,18 +117,21 @@
         $this->assertEquals($stylist_id, $result);
     }
 
-
+//again, everything looks okay
     function testGetAll()
     {
         $stylist = "rick james";
         $test_stylist = new Stylist($stylist);
+        $test_stylist->save();
+        $stylist_id = $test_stylist->getId();
+
         $client_name = "JimiInGetAll";
-        $test_client = new Client($client_name);
+        $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
-        $stylist_id = $testStylist->getId();
+
 
         $client_name2 = "AlpertInGetAll";
-        $test_client2 = new Client($client_name2);
+        $test_client2 = new Client($client_name2, $stylist_id);
         $test_client2->save();
 
         $result = Client::getAll();
@@ -138,15 +144,16 @@
         $stylist = "rickkik james";
         $test_stylist = new Stylist($stylist);
         $test_stylist->save();
+        $stylist_id = $test_stylist->getId();
 
         $client_name = "juniper";
         $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
-        $stylist_id = $test_stylist->getId();
 
-        $client_name2 = "JuiGer";
+        $client_name2 = "juniper";
         $test_client2 = new Client($client_name2, $stylist_id);
         $test_client2->save();
+
 
         Client::deleteAll();
         $result = Client::getAll();

@@ -29,7 +29,7 @@
 //good
         function getStylistId()
         {
-            return $this->$stylist_id;
+            return $this->stylist_id;
         }
 //should be good
         function save()
