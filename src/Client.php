@@ -34,7 +34,7 @@
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
             if ($executed) {
                 $this->id= $GLOBALS['DB']->lastInsertId();
                 return true;
@@ -50,7 +50,8 @@
             foreach ($returned_clients as $client) {
                 $client_name = $client['name'];
                 $id = $client['id'];
-                $new_client = new Client($client_name, $id);
+                $stylist_id = $client['stylist_id'];
+                $new_client = new Client($client_name, $id, $stylist_id);
                 array_push($clients_array, $new_client);
             }
             return $clients_array;
@@ -75,8 +76,9 @@
             foreach($returned_clients as $client) {
                 $client_name = $client['name'];
                 $id = $client['id'];
+                $stylist_id = $client['stylist_id'];
                 if ($id == $search_id) {
-                    $found_client = new Client($client_name, $id);
+                    $found_client = new Client($client_name, $id, $stylist_id);
                 }
             }
             return $found_client;
