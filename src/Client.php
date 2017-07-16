@@ -12,20 +12,20 @@
 
         function getClientName()
         {
-
+            return $this->client_name;
         }
 
         function setClientName()
         {
-
+            $this->stylist = (string) $new_name;
         }
 
         function getId()
         {
-
+            return $this->id;
         }
 
-        
+
 
 
     }
