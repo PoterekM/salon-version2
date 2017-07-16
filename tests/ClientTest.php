@@ -39,7 +39,7 @@
 
             $this->assertEquals($executed, "Better luck next time");
         }
-
+//should be alright
     function testGetClientName()
     {
         $stylist = "Lucy";
@@ -48,7 +48,7 @@
         $stylist_id = $test_stylist->getId();
 
         $client_name = "BurrGurr";
-        $test_client = new Client($client_name, $id, $stylist_id);
+        $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
 
         $result = $test_client->getClientName();
@@ -56,6 +56,7 @@
         $this->assertEquals($client_name, $result);
     }
 
+//fixed
     function testSetClientName()
     {
         $stylist = "jamba";
@@ -73,17 +74,17 @@
 
         $this->assertEquals($new_name, $result);
     }
-
+////should be ok?
     function testGetId()
     {
         //Arrange
         $stylist = "Hunny";
         $test_stylist = new Stylist($stylist);
         $test_stylist->save();
-
         $stylist_id = $test_stylist->getId();
+
         $client_name = "Drewberrz";
-        $test_client = new Client($client_name, $id, $stylist_id);
+        $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
 
         //Act
@@ -101,7 +102,7 @@
         $stylist_id = $test_stylist->getId();
 
         $client_name = "Gertrude";
-        $test_client = new Client($client_name, $id, $stylist_id);
+        $test_client = new Client($client_name, $stylist_id);
         $test_client->save();
 
         $client_name2 = "Gertrude";
