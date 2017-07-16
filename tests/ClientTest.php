@@ -22,7 +22,7 @@
     {
         $client_name = "Burmie";
         $test_client = new Client($client_name);
-        $test_client->save();
+        // $test_client->save();
 
         $result = $test_client->getClientName();
 
@@ -32,11 +32,11 @@
     function testSetClientName()
     {
         $client_name = "Yannni";
-        $test_name = new Client($client_name);
+        $test_client = new Client($client_name);
         $new_name = "Yawhni";
 
-        $test_name->setName($new_name);
-        $result = $test_name->getName();
+        $test_client->setClientName($new_name);
+        $result = $test_client->getClientName();
 
         $this->assertEquals($new_name, $result);
     }
@@ -53,6 +53,17 @@
 
         //assert
         $this->assertEquals(true, is_numeric($result));
+    }
+
+    function testSave()
+    {
+        $client_name = "jarjarbinks";
+        $test_client = new Client($client_name);
+
+        $executed = $test_client->save();
+
+        $this->assertTrue($executed, "I'd rather not save your testSave");
+
     }
 
 
