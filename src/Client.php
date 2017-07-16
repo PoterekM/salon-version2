@@ -17,7 +17,7 @@
 
         function setClientName($new_name)
         {
-            $this->client_name = (string) $new_name;
+            $this->client_name = (string)$new_name;
         }
 
         function getId()
@@ -43,7 +43,7 @@
             $clients_array = array();
             foreach ($returned_clients as $client) {
                 $client_name = $client['name'];
-                $id = $client['client_id'];
+                $id = $client['id'];
                 $new_client = new Client($client_name, $id);
                 array_push($clients_array, $new_client);
             }
@@ -59,6 +59,24 @@
                 return false;
             }
         }
+
+        static function find($search_id)
+        {
+            $found_client = null;
+            $returned_clients = $GLOBALS['DB']->prepare("SELECT * FROM clients WHERE id = :id");
+            $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_clients->execute();
+            foreach($returned_clients as $client) {
+                $client_name = $client['name'];
+                $id = $client['id'];
+                if ($id == $search_id) {
+                    $found_client = new Client($client_name, $id);
+                }
+            }
+            return $found_client;
+        }
+
+
 
 
 

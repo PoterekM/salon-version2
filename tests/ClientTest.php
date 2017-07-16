@@ -18,14 +18,24 @@
     {
         protected function tearDown()
         {
-          Client::deleteAll();
+            Client::deleteAll();
         }
 
+        function testSave()
+        {
+            $client_name = "jarjarbinks";
+            $test_client = new Client($client_name);
+
+            $executed = $test_client->save();
+
+            $this->assertTrue($executed, "I'd rather not save your testSave");
+        }
 
     function testGetClientName()
     {
         $client_name = "BurrGurr";
         $test_client = new Client($client_name);
+        $test_client->save();
 
         $result = $test_client->getClientName();
 
@@ -36,6 +46,7 @@
     {
         $client_name = "Yannni";
         $test_client = new Client($client_name);
+        $test_client->save();
         $new_name = "Yawhni";
 
         $test_client->setClientName($new_name);
@@ -58,15 +69,6 @@
         $this->assertEquals(true, is_numeric($result));
     }
 
-    function testSave()
-    {
-        $client_name = "jarjarbinks";
-        $test_client = new Client($client_name);
-
-        $executed = $test_client->save();
-
-        $this->assertTrue($executed, "I'd rather not save your testSave");
-    }
 
     function testGetAll()
     {
@@ -98,6 +100,23 @@
 
         $this->assertEquals([], $result);
     }
+
+    function testFind()
+    {
+        $client_name = "Jimmmi";
+        $test_client = new Client($client_name);
+        $test_client->save();
+
+        $client_name2 = "Alpbpbert";
+        $test_client2 = new Client($client_name2);
+        $test_client2->save();
+
+        $result = Client::find($test_client2->getId());
+
+        $this->assertEquals($test_client2, $result);
+    }
+
+
 
 
 
