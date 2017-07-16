@@ -10,14 +10,19 @@
       <input type="text" name="stylist">
       <button type="submit" name="btn">Add them!</button>
 
+      {% if stylists is not empty %}
 
-      {% for stylist in stylists %}
-        <li> {{ stylist.getStylist }} </li>
-      {% endfor %}
+          {% for stylist in stylists %}
+            <li> {{ stylist.getStylist }} </li>
+          {% endfor %}
 
-      <h4>Delete All Stylists</h4>
-      <a href="delete_all_stylists" class="btn btn-primary active" role="button">Click here</a>
+          <h4>Delete All Stylists</h4>
+          <a href="delete_all_stylists" class="btn btn-primary active" role="button">Click here</a>
 
+          {% else %}
+          <p>Please enter some stylists to get started!</p>
+
+      {% endif %}
 
 
 
