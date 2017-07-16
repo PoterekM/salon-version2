@@ -5,17 +5,16 @@
   </head>
   <body>
     <h1>yaddah yaddah, welcome to our bougie salon</h1>
-    <form action="/" method="post">
+    <form action="/stylists" method="post">
       <label for="stylist">Please enter the name of your stylist:</label>
       <input type="text" name="stylist">
       <button type="submit" name="btn">Add them!</button>
-
   </form>
 
       {% if stylists is not empty %}
 
           {% for stylist in stylists %}
-            <li> <a href="/stylists/{{ category.getId }}">{{ stylist.getStylist }} </li>
+            <li> <a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylist }} </li>
           {% endfor %}
 
           <h4>Delete All Stylists</h4>

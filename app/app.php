@@ -14,7 +14,9 @@
 
 
     $app = new Silex\Application();
+
     // $app['debug'] = true;
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
@@ -36,10 +38,16 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+////chunk together
     $app->post("/stylists", function() use ($app) {
-        $category = new Stylist($_POST['stylist']);
-        $category->save();
-        return $app['twig']->render('index.html.twig', array('categories' => Stylist::getAll()));
+        $stylist = new Stylist($_POST['stylist']);
+        $stylist->save();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->get("/stylists/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('index.html.twig', array('stylists' => $stylist, 'clients' => $clients));
     });
 
     return $app;
