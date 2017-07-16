@@ -37,7 +37,7 @@
 
             $executed = $test_client->save();
 
-            $this->assertEquals($executed, "Better luck next time");
+            $this->assertTrue($executed, "Better luck next time");
         }
 //should be alright
     function testGetClientName()
