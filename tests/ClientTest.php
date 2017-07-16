@@ -27,7 +27,7 @@
             $stylist = "Lucy";
             $test_stylist = new Stylist($stylist);
             $test_stylist->save();
-            $stylist_id = $test_stylist->getId();
+            $stylist_id = $test_stylist->getStylistId();
 
             $client_name = "jarjarbinks";
 

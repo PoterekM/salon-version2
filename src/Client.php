@@ -11,17 +11,17 @@
             $this->id = $id;
             $this->stylist_id = $stylist_id;
         }
-
+//good
         function getClientName()
         {
             return $this->client_name;
         }
-
+//good
         function setClientName($new_name)
         {
             $this->client_name = (string)$new_name;
         }
-
+//gppd
         function getId()
         {
             return $this->id;
@@ -29,7 +29,7 @@
 
         function getStylistId()
         {
-            return $stylist_id;
+            return $this->$stylist_id;
         }
 
         function save()
