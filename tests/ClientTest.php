@@ -31,7 +31,7 @@
 
             $client_name = "jarjarbinks";
 
-            $test_client = new Client($client_name, $stylist_id, $id);
+            $test_client = new Client($client_name, $id, $stylist_id);
 
             $test_client->save();
 
@@ -48,7 +48,7 @@
         $stylist_id = $test_stylist->getId();
 
         $client_name = "BurrGurr";
-        $test_client = new Client($client_name, $stylist_id, $id);
+        $test_client = new Client($client_name, $id, $stylist_id);
         $test_client->save();
 
         $result = $test_client->getClientName();
@@ -59,7 +59,7 @@
     function testSetClientName()
     {
         $client_name = "Yannni";
-        $test_client = new Client($client_name, $stylist_id);
+        $test_client = new Client($client_name, $id, $stylist_id);
         $test_client->save();
         $new_name = "Yawhni";
 
@@ -78,7 +78,7 @@
 
         $stylist_id = $test_stylist->getId();
         $client_name = "Drewberrz";
-        $test_client = new Client($client_name, $stylist_id);
+        $test_client = new Client($client_name, $id, $stylist_id);
         $test_client->save();
 
         //Act
@@ -96,7 +96,7 @@
         $stylist_id = $test_stylist->getId();
 
         $client_name = "Gertrude";
-        $test_client = new Client($client_name, $stylist_id);
+        $test_client = new Client($client_name, $id, $stylist_id);
         $test_client->save();
 
         $client_name2 = "Gertrude";
