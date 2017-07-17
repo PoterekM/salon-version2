@@ -45,17 +45,17 @@
         $clients = $stylist->getClients();
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $clients));
     });
-
+    //// this render will have to change
 
     $app->get("/stylists", function() use ($app) {
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    // $app->post("/stylists", function() use ($app) {
-    //     $stylist = new Stylist($_POST['stylist']);
-    //     $stylist->save();
-    //     return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
-    // });
+    $app->post("/stylists", function() use ($app) {
+        $stylist = new Stylist($_POST['stylist']);
+        $stylist->save();
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
     return $app;
 
 ?>

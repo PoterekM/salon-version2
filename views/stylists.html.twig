@@ -3,18 +3,20 @@
         <title></title>
     </head>
     <body>
-        <h1>Stylists</h1>
-        <form action="/stylists" method="post">
-            <label for="stylist">Stylist: </label>
-            <input type="text" name="stylist">
-            <button type='submit'>Add stylist</button>
-        </form>
+        <h1>Stylists YOU PICKED</h1>
+
+
         <ul>
-            {% for stylist in stylists %}
             <li>{{ stylist.getStylist }}</li>
-            {% endfor %}
 
         </ul>
+
+        <form action='/clients' method='post'>
+            <label for='client_name'>Client name:</label>
+            <input id='client_name' name='client_name' type='text'>
+
+        <button type='submit'>Add client</button>
+        </form>
 
 
         <p><a href="/">Home</a></p>
