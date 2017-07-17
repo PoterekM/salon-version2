@@ -58,13 +58,15 @@
     });
 
     $app->get("/clients", function() use ($app) {
-        return $app['twig']->render('stylists.html.twig', array('clients' => Clients::getAll()));
+        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
     });
 
     $app->post("/clients", function() use ($app) {
-        $clients = new Stylist($_POST['clients']);
-        $clients->save();
-        return $app['twig']->render('clients.html.twig', array('clients' => Clients::getAll()));
+        $client_name = $_POST['client_name'];
+        $stylist_id = $_POST['stylist_id'];
+        $client = new Client($client_name, $stylist_id);
+        $client->save();
+        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
     });
 
 
