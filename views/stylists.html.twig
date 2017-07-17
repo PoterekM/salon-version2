@@ -5,14 +5,22 @@
     <body>
 
 
-        
+
         <h1>{{ stylist.getStylist }}'s Clients</h1>
+
+        {% for client in clients %}
+        <ul>
+            <li>{{ client.getClientName }}</li>
+        </ul>
+        {% endfor %}
+
+
 
 
 
         <form action='/clients' method='post'>
             <label for='client_name'>Client name:</label>
-            <input id='client_name' name='client_name' type='text'>
+            <input id='client_name' name='client_name' type='text' class='form-control'>
 
         <button type='submit'>Add client</button>
         </form>

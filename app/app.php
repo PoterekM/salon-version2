@@ -45,7 +45,7 @@
         $clients = $stylist->getClients();
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $clients));
     });
-    //// this render will have to change
+    //// this render may have to change
 
     $app->get("/stylists", function() use ($app) {
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
@@ -56,6 +56,19 @@
         $stylist->save();
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
+
+    $app->get("/clients", function() use ($app) {
+        return $app['twig']->render('stylists.html.twig', array('clients' => Clients::getAll()));
+    });
+
+    $app->post("/clients", function() use ($app) {
+        $clients = new Stylist($_POST['clients']);
+        $clients->save();
+        return $app['twig']->render('clients.html.twig', array('clients' => Clients::getAll()));
+    });
+
+
+
     return $app;
 
 ?>
