@@ -4,7 +4,8 @@
     <title>Hair Salon</title>
   </head>
   <body>
-    <h1>yaddah yaddah, welcome to our bougie salon</h1>
+
+ <h1>yaddah yaddah, welcome to our bougie salon</h1>
     <form action="/stylists" method="post">
       <label for="stylist">Please enter the name of your stylist:</label>
       <input type="text" name="stylist">
@@ -13,18 +14,21 @@
 
       {% if stylists is not empty %}
 
+      <ul>
           {% for stylist in stylists %}
-            <li> <a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylist }} </li>
+
+
+         <li> <a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylist }} </li>
           {% endfor %}
+      </ul>
 
           <h4>Delete All Stylists</h4>
           <a href="delete_all_stylists" class="btn btn-primary active" role="button">Click here</a>
 
-          {% else %}
+      {% else %}
           <p>Please enter some stylists to get started!</p>
 
       {% endif %}
-
 
 
 

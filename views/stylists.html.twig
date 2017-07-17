@@ -3,16 +3,20 @@
         <title></title>
     </head>
     <body>
-        {{ stylist.getStylist}}
+        <h1>Stylists</h1>
+        <form action="/stylists" method="post">
+            <label for="stylist">Stylist: </label>
+            <input type="text" name="stylist">
+            <button type='submit'>Add stylist</button>
+        </form>
         <ul>
+            {% for stylist in stylists %}
+            <li>{{ stylist.getStylist }}</li>
+            {% endfor %}
 
-            {% for client in clients %}
-            <li>
-                {{ client.getClientName }}
-            </li>
-
-            <h4>Add a task</h4>
+        </ul>
 
 
+        <p><a href="/">Home</a></p>
 </body>
 </html>
