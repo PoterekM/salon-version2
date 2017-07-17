@@ -25,7 +25,7 @@
         return $app['twig']->render('index.html.twig', array(Stylist::getAll()));
     });
 
-    $app->post("/", function() use ($app) {
+    $app->post("/stylists", function() use ($app) {
         $stylist = $_POST['stylist'];
         $new_stylist = new Stylist($stylist);
 
