@@ -27,14 +27,17 @@
 
        $app->get("/stylists/{id}", function($id) use ($app) {
            $stylist = Stylist::find($id);
-           return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+           return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' =>
+           $stylist->getClients()));
        });
+       ////changed this to render at stylists instead of index
 
-    //    $app->post("/stylists", function() use ($app) {
-    //        $stylist = new Stylist($_POST['stylist']);
-    //        $stylist->save();
-    //        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
-    //    });
+       $app->post("/stylists/{id}", function() use ($app) {
+           $stylist = new Stylist($_POST['stylist']);
+           $stylist->save();
+           return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+       });
+       //////not sure why adding this doesn't change the route to stylists .html
 
        $app->post("/delete_all_stylists", function() use ($app) {
            Stylist::deleteAll();
