@@ -15,12 +15,15 @@
         </ul>
         {% endfor %}
 
+        <form action="/clients" method="post">
+            <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+            <label for="client">Client: </label>
+            <input type="text" name="client" required>
+            <button type="submit">Submit</button>
+        </form>
 
 
-
-
-
-
+<!-- Major assist from database basics with php/relationships in silex -->
         <p><a href="/">Home</a></p>
 </body>
 </html>
