@@ -85,6 +85,16 @@
             return $found_client;
         }
 
+        function update($new_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            if ($executed) {
+                $this->setClientName($new_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
 
 
 
