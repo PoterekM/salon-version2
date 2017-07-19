@@ -5,5 +5,12 @@
     </head>
     <body>
         Edit {{ stylist.getStylist }}
+
+        <form action="/stylists/{{ stylist.getId }}" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <label for="stylist">Rename your stylist:</label>
+            <input type="text" name="stylist">
+            <button type="submit">update</button>
+        </form>
     </body>
 </html>
