@@ -165,6 +165,23 @@
         }
 
 
+        function testDelete()
+        {
+            $stylist = "rickkik james";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+
+            $stylist2 = "rickkik james";
+            $test_stylist2 = new Stylist($stylist);
+            $test_stylist2->save();
+
+            $test_stylist2->delete();
+
+            $this->assertEquals([$test_stylist], Stylist::getAll());
+
+        }
+
+
 
 
 
