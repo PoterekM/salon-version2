@@ -45,17 +45,15 @@
        });
 
 
-
-       //
-    //    $app->get("/categories", function() use ($app) {
-    //        return $app['twig']->render('categories.html.twig', array('categories' => Category::getAll()));
-    //    });
-       //
-       //
-    //    $app->post("/delete_tasks", function() use ($app) {
-    //        Task::deleteAll();
-    //        return $app['twig']->render('index.html.twig');
-    //    });
+       $app->post('/clients', function() use ($app) {
+           $name = $_POST['client'];
+           $stylist_id = $_POST['stylist_id'];
+           $client = new Client($name, $stylist_id, $id = null);
+           $client->save();
+           $stylist = Stylist::find($stylist_id);
+           return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' =>
+           $stylist->getClients()));
+       });
 
        return $app;
    ?>
