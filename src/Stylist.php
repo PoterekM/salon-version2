@@ -90,6 +90,16 @@
             }
         }
 
+        function update($new_stylist)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE stylists SET stylist = '{$new_stylist}' WHERE id = {$this->getId()};");
+            if ($executed) {
+                $this->setStylist($new_stylist);
+                return true;
+            } else {
+                return false;
+            }
+        }
 
     }
 
