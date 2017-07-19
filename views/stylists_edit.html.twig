@@ -6,11 +6,18 @@
     <body>
         Edit {{ stylist.getStylist }}
 
-        <form action="/stylists/{{ stylist.getId }}" method="post">
+        <form action='/stylists/{{ stylist.getId }}' method="post">
             <input type="hidden" name="_method" value="patch">
             <label for="stylist">Rename your stylist:</label>
-            <input type="text" name="stylist">
+            <input type="text" name="stylist" id="stylist">
             <button type="submit">update</button>
         </form>
+
+        <form action="/stylists/{{ stylist.getId }}" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit">Remove Stylist</button>
+        </form>
+
+
     </body>
 </html>
