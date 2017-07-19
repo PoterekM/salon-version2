@@ -4,27 +4,21 @@
     </head>
     <body>
 
-        <h1>THIS IS THE STYLISTS PAGE"
+        <h1>THIS IS THE STYLISTS PAGE</h1>
 
         <h1>{{ stylist.getStylist }}'s Clients</h1>
 
-        {% for client in clients %}
+        <!-- {% for client in clients %}
         <ul>
-            <li>{{ client.getClientName }}</li>
+            <li>{{ client.getClients }}</li>
         </ul>
-        {% endfor %}
+        {% endfor %} -->
 
 
 
 
 
-        <form action='/clients' method='post'>
-            <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
-            <label for='client_name'>Client name:</label>
-            <input id='client_name' name='client_name' type='text' class='form-control'>
 
-        <button type='submit'>Add client</button>
-        </form>
 
 
         <p><a href="/">Home</a></p>

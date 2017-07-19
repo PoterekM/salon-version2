@@ -14,15 +14,45 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
-    ////the array stylists get all allows the stylists to be viewed on the index page. withing the array, 'stylists' allows us to call to stylists on the page.
     $app->get("/", function() use ($app) {
-            return $app['twig']->render('index.html.twig', array( 'stylists' => Stylist::getAll()));
-        });
+       return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->post("/", function() use ($app) {
+        $name = $_POST['stylist'];
+        $stylist = new Stylist($name);
+        $stylist->save();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+       $app->get("/stylists/{id}", function($id) use ($app) {
+           $stylist = Stylist::find($id);
+           return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+       });
+
+    //    $app->post("/stylists", function() use ($app) {
+    //        $stylist = new Stylist($_POST['stylist']);
+    //        $stylist->save();
+    //        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    //    });
+
+       $app->post("/delete_all_stylists", function() use ($app) {
+           Stylist::deleteAll();
+           return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+       });
 
 
 
+       //
+    //    $app->get("/categories", function() use ($app) {
+    //        return $app['twig']->render('categories.html.twig', array('categories' => Category::getAll()));
+    //    });
+       //
+       //
+    //    $app->post("/delete_tasks", function() use ($app) {
+    //        Task::deleteAll();
+    //        return $app['twig']->render('index.html.twig');
+    //    });
 
-
-    return $app;
-
-?>
+       return $app;
+   ?>

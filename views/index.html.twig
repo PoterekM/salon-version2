@@ -6,13 +6,14 @@
   <body>
 
  <h1>yaddah yaddah, welcome to our bougie salon</h1>
-    <form action="/stylists" method="post">
+    <form action="/" method="post">
       <label for="stylist">Please enter the name of your stylist:</label>
-      <input type="text" name="stylist">
+      <input type="text" name="stylist" required>
       <button type="submit" name="btn">Add them!</button>
   </form>
 
-      {% if stylists is not empty %}
+
+       {% if stylists is not empty %}
 
       <ul>
           {% for stylist in stylists %}
@@ -22,10 +23,12 @@
           {% endfor %}
       </ul>
 
+      <form action="/delete_all_stylists" method="post">
           <h4>Delete All Stylists</h4>
-          <a href="delete_all_stylists">Click here</a>
+          <button type="submit">Click here</button>
+      </form>
 
-      {% else %}
+       {% else %}
           <p>Please enter some stylists to get started!</p>
 
       {% endif %}
