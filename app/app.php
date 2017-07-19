@@ -60,6 +60,10 @@
            return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
        });
 
+       $app->get('/stylists/{id}/edit', function ($id) use ($app) {
+           $name = Stylist::find($id);
+           return $app['twig']->render('stylists_edit.html.twig', array('stylist' => $name));
+       });
 
        return $app;
    ?>
