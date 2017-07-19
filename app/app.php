@@ -14,6 +14,9 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app->get("/", function() use ($app) {
        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
@@ -66,11 +69,10 @@
        });
 
        $app->patch("/stylists/{id}", function($id) use ($app) {
-           $name = $_POST['stylist'];
+           $name = $_POST['name'];
            $stylist = Stylist::find($id);
-           $stylist->update($stylist);
-           return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'client' =>
-           $stylist->getClients()));
+           $stylist->update($name);
+           return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
        });
 
        $app->delete('/stylists/{id}', function ($id) use ($app) {
