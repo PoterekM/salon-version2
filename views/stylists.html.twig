@@ -17,7 +17,9 @@
 
         {% for client in clients %}
         <ul>
-            <li>{{ client.getClientName }}</li>
+            <form action="/clients/{{ client.getId }}/edit" method="post">
+                <li><a href="/clients/{{ client.getId }}/edit">{{ client.getClientName }}</a></li>
+            </form>
         </ul>
         {% endfor %}
 
