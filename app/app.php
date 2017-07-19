@@ -55,5 +55,11 @@
            $stylist->getClients()));
        });
 
+       $app->post("/delete_all_clients", function() use ($app) {
+           Client::deleteAll();
+           return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+       });
+
+
        return $app;
    ?>
