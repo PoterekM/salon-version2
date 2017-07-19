@@ -18,12 +18,12 @@
           {% for stylist in stylists %}
 
 
-         <li> <a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylist }} </li>
+         <li> <a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylist }} </a> </li>
           {% endfor %}
       </ul>
 
           <h4>Delete All Stylists</h4>
-          <a href="delete_all_stylists" class="btn btn-primary active" role="button">Click here</a>
+          <a href="delete_all_stylists">Click here</a>
 
       {% else %}
           <p>Please enter some stylists to get started!</p>

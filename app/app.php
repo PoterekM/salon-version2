@@ -28,7 +28,6 @@
     $app->post("/", function() use ($app) {
         $stylist = $_POST['stylist'];
         $new_stylist = new Stylist($stylist);
-
         $new_stylist->save();
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
@@ -57,17 +56,19 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    $app->get("/clients", function() use ($app) {
-        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
-    });
+    // $app->get("/clients", function() use ($app) {
+    //     return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
+    // });
 
+
+    ///this needs to change
     $app->post("/clients", function() use ($app) {
-        $client_name = $_POST['name'];
+        $client = $_POST['client_name'];
         $stylist_id = $_POST['stylist_id'];
-        $client = new Client($client_name, $stylist_id);
+        $client = new Client($client, $stylist_id);
         $client->save();
-        
-        return $app['twig']->render('clients.html.twig', array('stylist_id' => $stylist_id, 'name' => $client_name));
+
+        return $app['twig']->render('stylists.html.twig', array('stylist_id' => $stylist_id, 'client_name' => $client));
     });
 
 
