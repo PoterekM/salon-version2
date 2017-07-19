@@ -4,8 +4,11 @@
     </head>
     <body>
 
-        <h1>Clients</h1>
-        {{ stylist.getStylistId }}
+
+        <h1>THIS IS THE CLIENTS.HTML PAGE</h1>
+
+
+        <h1>{{ stylist.getStylist }}'s Clients</h1>
 
         {% for client in clients %}
         <ul>
@@ -13,8 +16,17 @@
         </ul>
         {% endfor %}
 
+        <form action='/clients' method='post'>
+            <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+            <label for='client_name'>Client name:</label>
+            <input id='client_name' name='client_name' type='text' class='form-control'>
 
-        <h1>This is the client list corresponding to stylists</h1>
+        <button type='submit'>Add client</button>
+        </form>
+
+
+        <p><a href="/">Home</a></p>
+
 
     </body>
 </html>
