@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <html>
-    <head>
-        <title>Edit This Stylist</title>
-    </head>
-    <body>
-        Edit {{ stylist.getStylist }}
-
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Edit This Stylist</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="well">
+        <h1>Edit {{ stylist.getStylist }}</h1>
         <form action='/stylists/{{ stylist.getId }}' method="post">
-            <input type="hidden" name="_method" value="patch">
-            <label for="name">Rename your stylist:</label>
-            <input type="text" name="name" id="stylist">
-            <button type="submit">update</button>
+          <input type="hidden" name="_method" value="patch">
+          <label for="name">Rename your stylist:</label>
+          <input type="text" name="name" id="stylist">
+          <button type="submit">update</button>
         </form>
+      </div>
 
-        <form action="/stylists/{{ stylist.getId }}" method="post">
-            <input name="_method" type="hidden" value="delete">
-            <button type="submit">Remove Stylist</button>
-        </form>
+      <form action="/stylists/{{ stylist.getId }}" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button type="submit">Remove Stylist</button>
+      </form>
 
-        <a href="/">home</a>
-
-
-    </body>
+      <a href="/">home</a>
+    </div>
+  </body>
 </html>
