@@ -1,18 +1,17 @@
 <html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <head>
         <title></title>
     </head>
     <body>
+        <div class="container">
 
-        <h1>THIS IS THE STYLISTS PAGE</h1>
-
-        <form action="/stylists/{{ stylist.getId }}/edit" method="post">
-            <a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a>
-        </form>
-
-
-        <h1>{{ stylist.getStylist }}'s Clients</h1>
-
+            <div class="jumbotron">
+                <h1>{{ stylist.getStylist }}'s Clients</h1>
+                <form action="/stylists/{{ stylist.getId }}/edit" method="post">
+                    <a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a>
+                </form>
+            </div>
 
 
         {% for client in clients %}
@@ -38,5 +37,6 @@
 
 <!-- Major assist from database basics with php/relationships in silex -->
         <p><a href="/">Home</a></p>
+    </div>
 </body>
 </html>
