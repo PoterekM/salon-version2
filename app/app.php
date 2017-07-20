@@ -33,20 +33,17 @@
            return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' =>
            $stylist->getClients()));
        });
-       ////changed this to render at stylists instead of index
 
        $app->post("/stylists/{id}", function() use ($app) {
            $stylist = new Stylist($_POST['stylist']);
            $stylist->save();
            return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
        });
-       //////not sure why adding this doesn't change the route to stylists .html
 
        $app->post("/delete_all_stylists", function() use ($app) {
            Stylist::deleteAll();
            return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
        });
-
 
        $app->post('/clients', function() use ($app) {
            $name = $_POST['client'];
@@ -81,9 +78,6 @@
            return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
         });
 
-
-
-
         $app->get('/clients/{id}/edit', function ($id) use ($app) {
             $client = Client::find($id);
             return $app['twig']->render('clients_edit.html.twig', array('client' => $client));
@@ -101,7 +95,6 @@
             $client->delete();
             return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
          });
-
 
        return $app;
    ?>

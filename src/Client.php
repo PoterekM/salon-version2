@@ -11,27 +11,27 @@
             $this->stylist_id = $stylist_id;
             $this->id = $id;
         }
-//good
+
         function getClientName()
         {
             return $this->client_name;
         }
-//good
+
         function setClientName($new_name)
         {
             $this->client_name = (string)$new_name;
         }
-//gppd
+
         function getId()
         {
             return $this->id;
         }
-//good
+
         function getStylistId()
         {
             return $this->stylist_id;
         }
-//should be good
+
         function save()
         {
             $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
@@ -42,7 +42,7 @@
                 return false;
             }
         }
-//should be good
+
         static function getAll()
         {
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
@@ -57,7 +57,6 @@
             return $clients;
         }
 
-//should be good
         static function deleteAll()
         {
             $executed = $GLOBALS['DB']->exec("DELETE FROM clients;");
@@ -67,7 +66,7 @@
                 return false;
             }
         }
-//should be good
+
         static function find($search_id)
         {
             $found_client = null;
@@ -105,10 +104,5 @@
                 return false;
             }
         }
-
-
-
-
-
     }
 ?>

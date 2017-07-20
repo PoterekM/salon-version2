@@ -1,5 +1,4 @@
 <?php
-
     /**
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
@@ -13,7 +12,6 @@
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
-
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
@@ -72,7 +70,6 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-
         function testGetAll()
         {
             $stylist = "Jimi";
@@ -103,10 +100,6 @@
             $this->assertEquals($test_stylist, $result);
         }
 
-
-
-
-
         function testDeleteAll()
         {
             $stylist = "Bobbo";
@@ -120,7 +113,6 @@
             $result = Stylist::getAll();
 
             $this->assertEquals([], $result);
-
         }
 
         function testGetClients()
@@ -164,7 +156,6 @@
             $this->assertEquals("Ivy", $test_stylist->getStylist());
         }
 
-
         function testDelete()
         {
             $stylist = "rickkik james";
@@ -180,12 +171,6 @@
             $this->assertEquals([$test_stylist], Stylist::getAll());
 
         }
-
-
-
-
-
-
     }
 
 ?>
